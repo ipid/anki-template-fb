@@ -43,7 +43,7 @@ body.nightMode {
   font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
 }
 
-#deck-content card.nightMode {
+.nightMode #deck-content card {
   background-color: #1f1e40;
   color: white;
 }
@@ -69,7 +69,7 @@ body.nightMode {
   user-select: none;
 }
 
-#deck-content card-title.nightMode {
+.nightMode #deck-content card-title {
   background-color: #2d3a61;
 }
 
