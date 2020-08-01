@@ -75,8 +75,6 @@ body.nightMode {
 
 #deck-content card-content {
   display: block;
-
-  /* 防止 <p> 使卡片空白过多 */
   margin: 14px 0;
   padding: 0 14px;
 }
