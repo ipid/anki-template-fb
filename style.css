@@ -1,5 +1,13 @@
-#deck-content * {
-  overflow: hidden;
+p {
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  display: block;
+  border: 0;
+  height: 1px;
+  background: #ced0d4;
 }
 
 body {
@@ -7,12 +15,16 @@ body {
 }
 
 body.nightMode {
-  background: #333b45 !important;
+  background: #0c0b2f !important;
 }
 
 #deck-content {
   overflow: hidden;
-  padding: 0 10%;
+  padding: 0 5%;
+}
+
+#deck-content * {
+  overflow: hidden;
 }
 
 #deck-content card {
@@ -31,21 +43,34 @@ body.nightMode {
   font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
 }
 
-#deck-content hr {
-  display: block;
-  border: 0;
-  height: 1px;
-  background: #ced0d4;
+#deck-content card.nightMode {
+  background-color: #1f1e40;
+  color: white;
+}
+
+#deck-content card.card-hidden {
+  opacity: .4;
+}
+
+#deck-content card.card-show-from-hidden {
+  animation: show-from-hidden .2s;
 }
 
 #deck-content card-title {
   display: block;
-  height: 1.2em;
   background: #335998;
   font-weight: bold;
   color: white;
   padding: 0.5em 1em 0.75em;
-  font-size: 1.2em;
+  font-size: 1em;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+#deck-content card-title.nightMode {
+  background-color: #2d3a61;
 }
 
 #deck-content card-content {
@@ -54,9 +79,25 @@ body.nightMode {
   /* 防止 <p> 使卡片空白过多 */
   margin: 14px 0;
   padding: 0 14px;
-
 }
 
-card.hidden {
-  opacity: .4;
+#deck-content .card-hidden card-content {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@-webkit-keyframes show-from-hidden {
+  from { opacity: .4; }
+  to { opacity: 1 }
+}
+
+@-moz-keyframes show-from-hidden {
+  from { opacity: .4; }
+  to { opacity: 1 }
+}
+
+@keyframes show-from-hidden {
+  from { opacity: .4; }
+  to { opacity: 1 }
 }
