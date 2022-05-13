@@ -1,0 +1,25 @@
+{
+  "name": "anki-template-fb",
+  "version": "1.0.0",
+  "description": "A simple anki template, in imitation of Facebook.",
+  "main": "watcher.js",
+  "scripts": {
+    "watch": "node watcher.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ipid/anki-template-fb.git"
+  },
+  "author": "ipid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ipid/anki-template-fb/issues"
+  },
+  "homepage": "https://github.com/ipid/anki-template-fb#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "chokidar": "^3.5.3",
+    "postcss": "^8.4.13",
+    "sass": "^1.51.0"
+  }
+}

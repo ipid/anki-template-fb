@@ -1,0 +1,172 @@
+/* Old-browser compatible linear gradient. For old Anki versions. */
+@mixin compatible-gradient($color1, $color2) {
+  background-color: $color1;
+  /* Old browsers */
+
+  background-color: -moz-linear-gradient(left, $color1 0%, $color2 100%);
+  /* FF3.6-15 */
+
+  background-color: -webkit-gradient(linear, left top, right top, color-stop(0%, $color1), color-stop(100%, $color2));
+  /* Chrome4-9, Safari4-5 */
+
+  background-color: -webkit-linear-gradient(left, $color1 0%, $color2 100%);
+  /* Chrome10-25, Safari5.1-6 */
+
+  background-color: -o-linear-gradient(left, $color1 0%, $color2 100%);
+  /* Opera 11.10-11.50 */
+
+  background-color: -ms-linear-gradient(left, $color1 0%, $color2 100%);
+  /* IE10 preview */
+
+  background-color: linear-gradient(to right, $color1 0%, $color2 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color1}', endColorstr='#{$color2}', GradientType=1);
+  /* IE6-8 */
+}
+
+@mixin night-background {
+  /* Use !important to override default style of some Anki implementations. */
+  background: #1E1C40 !important;
+}
+
+body, #qa_box {
+  /* Use !important to override default style of some Anki implementations. */
+  background: #f0f2f5 !important;
+}
+
+#anki-template-fb-container {
+  padding: 5px 10px;
+  font-size: 14pt !important;
+
+  card {
+    overflow: hidden;
+    display: block;
+    background: white;
+    margin: 1.2em auto;
+    color: black;
+
+    box-shadow: #969ebc7f 1px 1px 5px 0;
+    border-radius: 8px;
+    font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+
+    b, strong {
+      /* Use !important to override default style of some Anki implementations. */
+      text-decoration: underline !important;
+      text-decoration-style: dotted !important;
+    }
+
+    u {
+      display: inline-block;
+      border-radius: 3px;
+      margin-right: 0.3em;
+      margin-bottom: 0.3em;
+      vertical-align: middle;
+      padding: 3px 8px;
+
+      color: white !important;
+      text-decoration: none !important;
+      font-style: normal !important;
+
+      &:nth-of-type(5n+1) {
+        background: #e68076;
+      }
+
+      &:nth-of-type(5n+2) {
+        background: #9ed097;
+      }
+
+      &:nth-of-type(5n+3) {
+        background: #eeaf61;
+      }
+
+      &:nth-of-type(5n+4) {
+        background: #ce8dcb;
+      }
+
+      &:nth-of-type(5n) {
+        background: #8c97d9;
+      }
+    }
+
+    i, em {
+      /* Use !important to override default style of some Anki implementations. */
+      color: #888 !important;
+      text-decoration: none !important;
+      font-style: normal !important;
+    }
+
+    ruby {
+      line-height: 2.2em;
+    }
+
+    rt {
+      font-size: 0.8em;
+    }
+
+    card-title {
+      display: block;
+      @include compatible-gradient(#8091CE, #8FB1DB);
+      font-weight: bold;
+      color: white;
+      padding: 0.5em 1em 0.75em;
+      user-select: none;
+    }
+
+    card-content {
+      display: block;
+      margin: 0.8em 0;
+      padding: 0 1em;
+      line-height: 1.5em;
+    }
+
+    &.card-hidden card-content {
+      user-select: none;
+
+      color: transparent !important;
+      * {
+        color: transparent !important;
+      }
+    }
+
+    &.card-show-from-hidden card-content {
+      animation: card-content-reveal .5s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+/* 🌙 Night mode 🌙 */
+@mixin night-container {
+  #anki-template-fb-container card {
+    background: #eeeef3;
+    box-shadow: none;
+    filter: brightness(0.65);
+
+    card-title {
+      @include compatible-gradient(#3a388d, #7e3dad);
+    }
+  }
+}
+
+body.nightMode, #qa_box.nightMode, .nightMode #qa_box {
+  @include night-background;
+  @include night-container;
+}
+
+@media (prefers-color-scheme: dark) {
+  body, #qa_box {
+    @include night-background;
+  }
+
+  @include night-container;
+}
+
+@keyframes card-content-reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
